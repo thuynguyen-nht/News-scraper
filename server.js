@@ -45,9 +45,9 @@ mongoose.connect(MONGODB_URI, {
 
 
 //Routes
-app.get("/", function (req, res) {
-    res.render("index");;
-});
+// app.get("/", function (req, res) {
+//     res.render("index.html");;
+// });
 
 // A GET route for scraping the newsbayarea website
 app.get("/scrape", function (req, res) {
