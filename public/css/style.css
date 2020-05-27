@@ -1,0 +1,19 @@
+body {
+    background-color: beige;
+}
+
+span {
+    padding-right: 10px;
+}
+
+#news-image {
+    width: 250px;
+}
+
+.media {
+    background-color: burlywood;
+}
+
+.nav-item {
+    padding-right: 20px;
+}
