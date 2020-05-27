@@ -17,3 +17,7 @@ span {
 .nav-item {
     padding-right: 20px;
 }
+
+#saved-section {
+    background-color: chartreuse;
+}
