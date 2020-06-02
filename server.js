@@ -49,7 +49,7 @@ app.set("view engine", "handlebars");
 var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines";
 
 mongoose.Promise = Promise;
-mongoose.connect(MONGODB_URI, {
+mongoose.connect("mongodb://heroku_mxf6s813:m8gb7g0l8hfqj65lfuhcs6072j@ds119702.mlab.com:19702/heroku_mxf6s813", {
     useNewUrlParser: true
 });
 
