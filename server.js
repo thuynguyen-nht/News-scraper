@@ -2,7 +2,7 @@ var express = require("express");
 var logger = require("morgan");
 var mongoose = require("mongoose");
 var bodyParser = require("body-parser");
-const Handlebars = require('handlebars');
+const handlebars = require('handlebars');
 const expressHandlebars = require('express-handlebars');
 const { allowInsecurePrototypeAccess } = require('@handlebars/allow-prototype-access')
 
@@ -39,7 +39,7 @@ app.use(express.json());
 
 app.engine("handlebars", expressHandlebars({
 
-    handlebars: allowInsecurePrototypeAccess(Handlebars),
+    handlebars: allowInsecurePrototypeAccess(handlebars),
     defaultLayout: "main",
 }));
 app.set("view engine", "handlebars");
@@ -150,22 +150,6 @@ app.delete("/saved/:id", function (req, res) {
         });
 });
 
-// // Route for grabbing a specific Article by id, populate it with it's note
-// app.get("/articles/saved/:id", function (req, res) {
-//     // Using the id passed in the id parameter, prepare a query that finds the matching one in our db...
-//     db.Article.findOne({
-//         _id: req.params.id
-//     })
-//         // ..and populate all of the notes associated with it
-//         .then(function (dbArticle) {
-//             // If we were able to successfully find an Article with the given id, send it back to the client
-//             res.json(dbArticle);
-//         })
-//         .catch(function (err) {
-//             // If an error occurred, send it to the client
-//             res.json(err);
-//         });
-// });
 
 // // Route for grabbing a specific Article by id, populate it with it's note
 // app.get("/articles/:id", function (req, res) {
