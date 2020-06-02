@@ -2,7 +2,7 @@ var express = require("express");
 var logger = require("morgan");
 var mongoose = require("mongoose");
 var bodyParser = require("body-parser");
-const handlebars = require('handlebars');
+const Handlebars = require('handlebars');
 const expressHandlebars = require('express-handlebars');
 const { allowInsecurePrototypeAccess } = require('@handlebars/allow-prototype-access')
 
@@ -39,7 +39,7 @@ app.use(express.json());
 
 app.engine("handlebars", expressHandlebars({
 
-    handlebars: allowInsecurePrototypeAccess(handlebars),
+    handlebars: allowInsecurePrototypeAccess(Handlebars),
     defaultLayout: "main",
 }));
 app.set("view engine", "handlebars");
