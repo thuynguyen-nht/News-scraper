@@ -85,3 +85,17 @@ $(document).on("click", "#submit", function () {
 
     $("#note-entry").val("");
 });
+
+//Delete an article
+$(document).on("click", ".delete-article", function () {
+    var thisId = $(this).attr("data-id");
+    $.ajax({
+        method: "DELETE",
+        url: "/saved/" + thisId
+    })
+        .then(function (data) {
+            // Log the response
+            console.log(data);
+            location.reload();
+        });
+});
