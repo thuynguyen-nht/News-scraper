@@ -1,0 +1,76 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="/">NewsScraper</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02"
+        aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+            <li class="nav-item active">
+                <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="/saved">Saved Articles</a>
+            </li>
+            <li class="nav-item active">
+                <button id="scraper" type="button" class="btn btn-dark">SCRAPE NEW ARTICLES</button>
+            </li>
+        </ul>
+    </div>
+</nav>
+<div class="container">
+    <div class="jumbotron jumbotron-fluid text-center">
+        <h1 class="display-4">News Scraper!</h1>
+        <p class="lead">From NBC Bay Area. Bring you the lastest news.</p>
+
+    </div>
+    <div class="row text-center">
+        <div class="col-xs-12">
+            <h3>"{{data.title}}" Notes</h3>
+        </div>
+    </div>
+    <main>
+        <div class="row">
+            <div class="col-xs-6 mr-1">
+                <div class="card mt-4">
+                    <div class="card-body">
+                        <form class="clearfix mb-4">
+                            <div class="form-group">
+                                <label for="title-note">
+                                    <h4>Title</h4>
+                                </label>
+                                <input type="text" id="title-note" class="form-control" aria-describedby="example-text"
+                                    placeholder="Title of note">
+                            </div>
+                            <div class="form-group">
+                                <label for="note-description">
+                                    <h4>Make a note on the article</h4>
+                                </label>
+                                <textarea class="form-control" id="note-description" rows="8"
+                                    aria-describedby="note-description" placeholder="Your Comment"></textarea>
+                            </div>
+                            <br>
+                            <button id="submit-note" data-id={{data._id}}
+                                style="padding: 5px 10px; float:right">Submit</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-6 ml-1">
+                <h4>Previous Comments</h4>
+                {{#if data.note}}
+                {{#each data.note}}
+                <hr>
+                <button data-id={{this._id}} class="delete-note" style="padding: 5px 10px; float:right">Delete</button>
+                <h4><strong>{{this.title}}</strong></h4>
+                <h5>{{this.body}}</h5>
+                <hr>
+                {{/each}}
+                {{else}}
+                <h5>There are no comments on this article.</h5>
+                {{/if}}
+            </div>
+        </div>
+    </main>
+</div>
