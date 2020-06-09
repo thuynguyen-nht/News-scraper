@@ -59,7 +59,8 @@ $(document).on("click", "#access-notes", function () {
         });
 });
 
-$(document).on("click", "#submit", function () {
+$(document).on("click", "#submit", function (e) {
+    e.preventDefault();
     // Grab the id associated with the article from the submit button
     var thisId = $(this).attr("data-id");
 
@@ -100,6 +101,7 @@ $(document).on("click", ".delete-article", function () {
         });
 });
 
+console.log("hello");
 //Go to the notes page for a particular article
 $(document).on("click", ".note-comment", function () {
     var thisId = $(this).attr("data-id");
@@ -115,7 +117,10 @@ $(document).on("click", ".note-comment", function () {
 });
 
 // Submit a note
-$(document).on("click", "#submit-note", function () {
+$(document).on("click", "#submit-note", function (e) {
+
+    e.preventDefault();
+    // debugger
     // Grab the id associated with the article from the submit button
     var thisId = $(this).attr("data-id");
     // Run a POST request to save the note
@@ -131,8 +136,11 @@ $(document).on("click", "#submit-note", function () {
     })
         .then(function (data) {
             // Log the response
+            // debugger
             console.log(data);
-            window.location.replace("/articles/" + data._id);
+            // window.location.replace("/articles/" + data._id);
+        }).catch(function (err) {
+            // debugger
         });
     // Also, remove the values entered in the input and textarea for note entry
     $("#title-note").val("");

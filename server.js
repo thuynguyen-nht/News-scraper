@@ -154,7 +154,7 @@ app.delete("/saved/:id", function (req, res) {
 app.get("/articles/:id", function (req, res) {
     console.log("This is line 155: " + req.params.id);
     // Using the id passed in the id parameter, prepare a query that finds the matching one in our db...
-    db.Article.findById(req.params.id)
+    db.Article.findOne({ _id: req.params.id })
 
         // ..and populate all of the notes associated with it
         .populate("note")
