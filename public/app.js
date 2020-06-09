@@ -107,8 +107,11 @@ $(document).on("click", ".note-comment", function () {
     $.ajax({
         method: "GET",
         url: "/articles/" + thisId
+    }).then(function (data) {
+        console.log(data);
+        window.location.replace("/articles/" + thisId);
     })
-    window.location.replace("/articles/" + thisId);
+
 });
 
 // Submit a note
@@ -137,8 +140,9 @@ $(document).on("click", "#submit-note", function () {
 });
 
 //delete a note
-$(document).on("click", ".delete-note", function () {
+$(".delete-note").on("click", function () {
     var thisId = $(this).attr("data-id");
+    console.log("This is line 142: " + thisId);
     $.ajax({
         method: "DELETE",
         url: "/articles/" + thisId

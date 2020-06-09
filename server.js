@@ -160,7 +160,7 @@ app.get("/articles/:id", function (req, res) {
         .populate("note")
         .then(function (dbArticle) {
             // If we were able to successfully find an Article with the given id, send it back to the client
-            console.log(dbArticle);
+            console.log("this is line 163 " + dbArticle);
             if (dbArticle) {
                 res.render("articles", {
                     data: dbArticle
@@ -197,7 +197,7 @@ app.post("/articles/:id", function (req, res) {
 
 //Route for deleting a note
 app.delete("/articles/:id", function (req, res) {
-    db.Note.deleteOne({ _id: req.params.id })
+    db.Note.findOneAndRemove({ _id: req.params.id })
         .then(function (removed) {
             res.json(removed);
         }).catch(function (err, removed) {
