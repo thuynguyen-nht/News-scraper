@@ -46,7 +46,8 @@ $(document).on("click", ".delete-article", function () {
 
 
 //Go to the notes page for a particular article
-$(document).on("click", ".note-comment", function () {
+$(document).on("click", ".note-comment", function (e) {
+    e.preventDefault();
     var thisId = $(this).attr("data-id");
     console.log(thisId);
     $.ajax({
@@ -55,6 +56,7 @@ $(document).on("click", ".note-comment", function () {
     })
         .then(function (data) {
             console.log(data);
+
             window.location.replace("/articles/" + thisId);
         })
 
@@ -82,7 +84,7 @@ $(document).on("click", "#submit-note", function (e) {
             // Log the response
             // debugger
             console.log(data);
-            // window.location.replace("/articles/" + data._id);
+            window.location.replace("/articles/" + data._id);
         }).catch(function (err) {
             // debugger
         });
@@ -92,7 +94,8 @@ $(document).on("click", "#submit-note", function (e) {
 });
 
 //delete a note
-$(".delete-note").on("click", function () {
+$(".delete-note").on("click", function (e) {
+    e.preventDefault();
     var thisId = $(this).attr("data-id");
     console.log("This is line 142: " + thisId);
     $.ajax({

@@ -152,15 +152,14 @@ app.delete("/saved/:id", function (req, res) {
 
 // Route for grabbing a specific Article by id, populate it with it's note
 app.get("/articles/:id", function (req, res) {
-    console.log("This is line 155: " + req.params.id);
+    console.log("This is line 121: " + req.params.id);
     // Using the id passed in the id parameter, prepare a query that finds the matching one in our db...
     db.Article.findOne({ _id: req.params.id })
-
         // ..and populate all of the notes associated with it
         .populate("note")
         .then(function (dbArticle) {
             // If we were able to successfully find an Article with the given id, send it back to the client
-            console.log("this is line 163 " + dbArticle);
+            console.log(dbArticle);
             if (dbArticle) {
                 res.render("articles", {
                     data: dbArticle
@@ -170,6 +169,7 @@ app.get("/articles/:id", function (req, res) {
         .catch(function (err) {
             // If an error occurred, send it to the client
             res.json(err);
+
         });
 });
 
